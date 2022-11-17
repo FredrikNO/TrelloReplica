@@ -1,0 +1,75 @@
+body{
+    background-color: #404258;
+}
+h5{
+    margin: 0;
+}
+.col-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.task{
+    width: 150px;
+    height: fit-content;
+    background-color: #aeb8de;
+    border: 2px solid black;
+    margin-left: 20px;
+}
+.task-header{
+    width: 150px;
+    height: 20px;
+}
+.task-input{
+    width: 142px;
+}
+.card{
+    /* position: relative; */
+    width:auto;
+    height: fit-content;
+    border: 1px solid #50577A;
+    margin-top: 0.5px;
+}
+.dropdown0{
+    display: none;
+}
+.dropdown1{
+    display: none;
+}
+.dropdown2{
+    display: none;
+}
+.dropdown3{
+    display: none;
+}
+.dropdown4{
+    display: none;
+}
+.dropdown5{
+    display: none;
+}
+.dummyInput{
+    width: fit-content;
+    height: 20px;
+    z-index: 1000;
+}
+.card-dropdown{
+    height: fit-content;
+    width: auto;
+    
+}
+.dropdown-button{
+    width: auto;
+    height: 20px;
+    background-color: white;
+}
+.card-placement{
+    width: auto;
+    height: 10px;
+}
+.addNewTask{
+    width:max-content;
+    height: 20px;
+}
+.task-button{
+    width: 150px;
+}
