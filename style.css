@@ -1,10 +1,20 @@
 body{
     background-color: #404258;
+    margin: 0;
+    padding: 0;
 }
 h5{
     margin: 0;
 }
-.col-3{
+i{
+    font-style: normal;
+    user-select: none;
+}
+.close:hover{
+    background-color: red;
+    border: 1px solid black;
+}
+.col{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
@@ -72,4 +82,146 @@ h5{
 }
 .task-button{
     width: 150px;
+}
+.task-view{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.task-display{
+    position: relative;
+    width: 150px;
+    height: 80px;
+    background-color: #50577A;
+}
+.task-display-newTask:hover{
+    background-color: #aeb8de89;
+}
+.task-display-newTask{
+    position: relative;
+    width: 150px;
+    height: 80px;
+    background-color:#aeb8de;
+}
+.task-title-newTask{
+    position: relative;
+    text-align: center;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: black;
+    font-style: bold;
+}
+.task-display:hover .task-star{
+    visibility: visible;
+}
+.task-title{
+    color: whitesmoke;
+    font-style: bold;
+    padding: 5px 0 0 3px;
+    width: 150px;
+    height: 50px;
+}
+.header{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    background-color: #50577A;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: white;
+    user-select: none;
+}
+.header-btn:hover{
+    background-color:#404258;
+}
+.header-btn{
+    width: auto;
+    height: auto;
+    margin: 10px 10px 10px 10px;
+    border-radius: 5px;
+}
+.header-dropdown:hover{
+    background-color:#404258;
+}
+.header-dropdown{
+    width: auto;
+    height: auto;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.header-arrow{
+    font-size: 1rem;
+}
+
+.header-search{
+    position: absolute;
+    right: 20px;
+    height: 20px;
+    margin-top: 10px;
+}
+
+.task-star{
+    visibility: hidden;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+}
+.task-liked{
+    color: #fbff00;
+}
+.task-create-new{
+    width: 150px;
+    height: auto;
+    background-color: aliceblue;
+}
+
+
+.moodle-workSpace-container{
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    width: 200px;
+    height: 150px;
+    background-color: aliceblue;
+    z-index: 10000;
+}
+.moodle-hide{
+    display: none;
+}
+.moodle-favorites-container{
+    position: absolute;
+    top: 50px;
+    left: 350px;
+    width: 200px;
+    height: 150px;
+    background-color: aliceblue;
+    z-index: 10000;
+}
+.moodle-recent-container{
+    position: absolute;
+    top: 50px;
+    left: 270px;
+    width: 200px;
+    height: 150px;
+    background-color: aliceblue;
+    z-index: 10000;
+}
+.moodle-templates-container{
+    position: absolute;
+    top: 50px;
+    left: 500px;
+    width: 200px;
+    height: 150px;
+    background-color: aliceblue;
+    z-index: 10000;
+}
+.moodle-create-container{
+    position: absolute;
+    top: 50px;
+    left: 590px;
+    width: 200px;
+    height: 150px;
+    background-color: aliceblue;
+    z-index: 10000;
 }

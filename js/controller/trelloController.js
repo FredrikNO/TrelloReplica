@@ -2,8 +2,8 @@ function dragdiv(event){
     id=event.target.attributes.name.nodeValue.split(',')[0];
     board=event.target.attributes.name.nodeValue.split(',')[1];
 
-    model.inputs.selectedCardId=id;
-    model.inputs.selectedBoardId=board;
+    model.inputs.board.selectedCardId=id;
+    model.inputs.board.selectedBoardId=board;
 }
 
 function allowdrop(event){
@@ -11,26 +11,27 @@ function allowdrop(event){
 }
 
 function dropdiv(event){
+    if(event.target.attributes.name===undefined){return}
+    
     let currentIndex=event.target.attributes.name.nodeValue.split(',')[1];
-
-    let previousIndex=model.inputs.selectedBoardId;
-    let previousCardIndex=model.tasks.board[previousIndex].cards.map(card=>card.id).indexOf(parseInt(model.inputs.selectedCardId));
+    let previousIndex=model.inputs.board.selectedBoardId;
+    let previousCardIndex=model.tasks[model.app.currentTask].board[previousIndex].cards.map(card=>card.id).indexOf(parseInt(model.inputs.board.selectedCardId));
 
     const card = {
-        id:model.tasks.board[currentIndex].cards.length+1,
-        description: model.tasks.board[previousIndex].cards[previousCardIndex].description
+        id:model.tasks[model.app.currentTask].board[currentIndex].cards.length+1,
+        description: model.tasks[model.app.currentTask].board[previousIndex].cards[previousCardIndex].description
     }
-    model.tasks.board[currentIndex].cards.push(card);
-    model.tasks.board[previousIndex].cards.splice(previousCardIndex,1)
+    model.tasks[model.app.currentTask].board[currentIndex].cards.push(card);
+    model.tasks[model.app.currentTask].board[previousIndex].cards.splice(previousCardIndex,1)
     updateView()
 }
 
 function makeNewCard(index){
     const newCard={
-        id: model.tasks.board[index].cards.length+1,
-        description: model.inputs.cardDescription,
+        id: model.tasks[model.app.currentTask].board[index].cards.length+1,
+        description: model.inputs.board.cardDescription,
     }
-    model.tasks.board[index].cards.push(newCard);
+    model.tasks[model.app.currentTask].board[index].cards.push(newCard);
     model.dropdown[index]='dropdown'+index;
     updateView()
 }
@@ -40,18 +41,16 @@ function showDropDownCardInput(index){
 }
 
 function addNewTask(){
-    if(model.tasks.board.length<6){
+    if(model.inputs.newTaskTitle===''){return}
+    if(model.tasks[model.app.currentTask].board.length<6){
         const board={
-            id:model.tasks.board.length+1,
-            title:model.inputs.newTaskTitle,
+            id:model.tasks[model.app.currentTask].board.length+1,
+            title:model.inputs.board.newTaskTitle,
             cards:[],
         }
-        model.tasks.board.push(board);
+        model.tasks[model.app.currentTask].board.push(board);
         model.dropdown.push(`dropdown${model.dropdown.length}`)
         updateView()
-    }
-    else{
-        console.log('ikke mer plass');
     }
 }
 
