@@ -1,5 +1,6 @@
 function homeView(){
     model.app.screen='tasks';
+    document.body.style.backgroundColor='';
     resetmoodles('home')
     updateView();
 }
@@ -55,4 +56,13 @@ function resetmoodles(moodle){
     else{
         moodleHome.workspace=moodleHome.recent=moodleHome.templates=moodleHome.favorites=moodleHome.workspace='';
     }
+}
+
+function showSearchMoodle(e){
+    model.inputs.home.search=true;
+}
+
+function searchTasks(input){
+    updateView()
+    console.log(input.value)
 }

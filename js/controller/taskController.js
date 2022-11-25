@@ -1,5 +1,6 @@
 function openBoard(id){
     model.app.currentTask=model.tasks.map(task=>task.id).indexOf(id);
+    document.body.style.backgroundColor=model.tasks[model.app.currentTask].backgroundColor;
     let currentTask=model.tasks[model.app.currentTask];
     if(model.recentTasks.length>=2){
         model.recentTasks.splice(0,1);
@@ -7,6 +8,7 @@ function openBoard(id){
     const recent={id:currentTask.id,title:currentTask.title}
     model.recentTasks.push(recent)
     model.app.screen='board';
+    resetmoodles('home');
     updateView();
 }
 function addStar(index){
@@ -25,4 +27,33 @@ function addStar(index){
 function CreateNewTaskWindow(){
     model.inputs.task.createNewTask= true;
     updateView()
+}
+
+function addNewWorkspace(){
+    if(model.inputs.task.taskName===''){return};
+    const task= {
+        id: model.tasks.length+1,
+        title: model.inputs.task.taskName,
+        stared: false,
+        backgroundColor:model.inputs.task.backgroundColor,
+        board:[
+            {id: 1,
+                title: 'Gjøremål',
+                cards:[],
+            },
+            {
+                id: 2,
+                title: 'Pågår',
+                cards:[],
+            },
+            {
+                id: 3,
+                title: 'Ferdig',
+                cards:[],
+            }
+        ]
+    };
+    model.tasks.push(task);
+    model.inputs.task.createNewTask='';
+    updateView();
 }

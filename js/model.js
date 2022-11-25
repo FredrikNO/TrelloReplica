@@ -15,7 +15,10 @@ const model = {
                 recent: false,
                 favorites: false,
                 templates:false,
-                create: false},
+                create: false,
+                search:false,
+                searchInput:'',
+            },
         },
     dropdown:['dropdown0','dropdown1','dropdown2'],
     favoritedTasks:[],
@@ -24,6 +27,7 @@ const model = {
         id:1,
         title: 'Test task',
         stared:false,
+        backgroundColor:'#50577A',
         board: [
             {
                 id: 1,
@@ -54,6 +58,7 @@ const model = {
         id:2,
         title: 'Trello',
         stared:false,
+        backgroundColor:'#50577A',
         board: [
             {
                 id: 1,
@@ -84,6 +89,7 @@ const model = {
         id:3,
         title: 'Nylige test',
         stared:false,
+        backgroundColor:'#50577A',
         board: [
             {
                 id: 1,

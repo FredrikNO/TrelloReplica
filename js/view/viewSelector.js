@@ -9,7 +9,7 @@ function updateView(){
         <div class="header-dropdown" onclick="showFavorites()">Stjernemerket<i class="header-arrow">⇩</i></div>
         <div class="header-dropdown" onclick="showTemplates()">Maler<i class="header-arrow">⇩</i></div>
         <div class="header-btn" onclick="showCreate()">Opprett</div>
-        <input class="header-search" type="text" oninput="" placeholder="søk ✎">
+        <input class="header-search" type="text" onpointerenter="showSearchMoodle(event)" oninput="searchTasks(this)" placeholder="søk ✎">
     </div>
     ${selectView()}
     ${moodleWorkspaces()}
@@ -17,6 +17,7 @@ function updateView(){
     ${moodleFavorites()}
     ${moodleTemplates()}
     ${moodleCreate()}
+    ${showSearchResults()}
     `;
     document.getElementById('app').innerHTML=html;
 }
@@ -33,7 +34,7 @@ function selectView(){
 }
 
 function moodleWorkspaces(){
-    let html='';
+    let html=''; 
     let workspaces=model.tasks.map(task=>`<div onclick="openBoard(${task.id})">${task.title}</div>`).join('');
     html=`
         <div class="moodle-workSpace-container ${model.inputs.home.workspace?'':'moodle-hide'}">
@@ -46,12 +47,13 @@ function moodleWorkspaces(){
 
 function moodleRecent(){
     let html='';
-    let recent=model.recentTasks.map(rec=>`<div onclick="openBoard(${rec.id})">${rec.title}</div>`).join('');
+    let reversedTasks=model.recentTasks.slice().reverse();
+    let recent=reversedTasks.map(rec=>`<div onclick="openBoard(${rec.id})">${rec.title}</div>`).join('');
     html=`
-        <div class="moodle-recent-container ${model.inputs.home.recent?'':'moodle-hide'}">
-            <div class="moodle-workSpace-title">Nylige tavler</div>
-            ${recent}
-        </div>
+    <div class="moodle-recent-container ${model.inputs.home.recent?'':'moodle-hide'}">
+    <div class="moodle-workSpace-title">Nylige tavler</div>
+    ${recent}
+    </div>
     `;
     return html
 }
@@ -80,7 +82,32 @@ function moodleCreate(){
     html=`
         <div class="moodle-create-container ${model.inputs.home.create?'':'moodle-hide'}">
             <div class="moodle-workSpace-title">Opprett nytt arbeidsområdet</div>
+            <div>
+                <p>Bakgrunnsfarge: </p>
+                <input class="moodle-create-color" type="color" onchange="model.inputs.task.backgroundColor=this.value" list="presetColor">
+                <datalist id="presetColor">
+                    <option value="#3F4E4F"></option>
+                    <option value="#A27B5C"></option>
+                    <option value="#DCD7C9"></option>
+                    <option value="#2C3639"></option>
+                </datalist>
+            </div>
+            <div>
+                <p>Tittel:</p>
+                <input class="moodle-create-input" type="text" oninput="model.inputs.task.taskName=this.value">
+            </div>
+            <button class="moodle-create-button" onclick="addNewWorkspace()">Lag ny tavle</button>
         </div>
     `;
     return html
+}
+
+function showSearchResults(){
+    let html='';
+    html=`
+        <div class="moodle-search-container ${model.inputs.home.search?'':'moodle-hide'}">
+        test
+        </div>
+    `;
+    return html;
 }

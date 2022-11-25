@@ -91,7 +91,7 @@ i{
     position: relative;
     width: 150px;
     height: 80px;
-    background-color: #50577A;
+    /* background-color: #50577A; */
 }
 .task-display-newTask:hover{
     background-color: #aeb8de89;
@@ -221,7 +221,26 @@ i{
     top: 50px;
     left: 590px;
     width: 200px;
-    height: 150px;
+    height: auto;
+    background-color: aliceblue;
+    z-index: 10000;
+}
+.moodle-create-color{
+    width:200px;
+}
+.moodle-create-input{
+    width: 192px;
+}
+.moodle-create-button{
+    width: 200px;
+}
+
+.moodle-search-container{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 200px;
+    height: 200px;
     background-color: aliceblue;
     z-index: 10000;
 }
