@@ -58,11 +58,21 @@ function resetmoodles(moodle){
     }
 }
 
-function showSearchMoodle(e){
-    model.inputs.home.search=true;
+function showSearchMoodle(){
+    // model.inputs.home.search=true;
+    document.getElementById('searchList').focus();
 }
 
 function searchTasks(input){
+    model.search=[];
+    let list=model.tasks.map(task=>task.title.toLocaleLowerCase())
+    list.forEach(function(task,index){
+        if(task.search(input.value)!=-1){
+            model.search.push(task)
+        }
+        else{
+            model.search.splice(index,1)
+        }
+    })
     updateView()
-    console.log(input.value)
 }

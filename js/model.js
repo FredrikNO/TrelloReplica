@@ -23,6 +23,7 @@ const model = {
     dropdown:['dropdown0','dropdown1','dropdown2'],
     favoritedTasks:[],
     recentTasks:[],
+    search:[],
     tasks:[ {
         id:1,
         title: 'Test task',

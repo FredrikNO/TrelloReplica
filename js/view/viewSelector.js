@@ -9,7 +9,7 @@ function updateView(){
         <div class="header-dropdown" onclick="showFavorites()">Stjernemerket<i class="header-arrow">⇩</i></div>
         <div class="header-dropdown" onclick="showTemplates()">Maler<i class="header-arrow">⇩</i></div>
         <div class="header-btn" onclick="showCreate()">Opprett</div>
-        <input class="header-search" type="text" onpointerenter="showSearchMoodle(event)" oninput="searchTasks(this)" placeholder="søk ✎">
+        <input class="header-search" id="searchList"  type="text" oninput="searchTasks(this, event)" onclick="showSearchMoodle()" placeholder="søk ✎">
     </div>
     ${selectView()}
     ${moodleWorkspaces()}
@@ -104,10 +104,6 @@ function moodleCreate(){
 
 function showSearchResults(){
     let html='';
-    html=`
-        <div class="moodle-search-container ${model.inputs.home.search?'':'moodle-hide'}">
-        test
-        </div>
-    `;
+    html=model.search;
     return html;
 }
